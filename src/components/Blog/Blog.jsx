@@ -1,7 +1,7 @@
 import { FaBookmark } from "react-icons/fa";
 import PropTypes from 'prop-types';
 
-const Blog = ({blog,handelBookmarkByBtn}) => {
+const Blog = ({blog,handelBookmarkByBtn,handelReadTime}) => {
     const {cover,title,author_img,author,posted_date,reading_time,hashtags}=blog;
 
     
@@ -11,7 +11,7 @@ const Blog = ({blog,handelBookmarkByBtn}) => {
             <div>
              <div className="flex justify-between">
                 <div className="flex gap-2">
-                <img className="w-16" src={author_img} alt="" />
+                    <img className="w-16" src={author_img} alt="" />
                     <div>
                     <small className="font-bold text-2xl">{author}</small>
                     <p className="font-semibold text-[#11111199]">{posted_date}</p>
@@ -29,14 +29,15 @@ const Blog = ({blog,handelBookmarkByBtn}) => {
                     hashtags.map((hashTag,inx)=><span className="mr-2" key={inx}><a href="">#{hashTag}</a></span>)
                 }
             </p>
-            <button className="font-semibold text-xl text-[#6047EC] underline">Mark as read</button>
+            <button onClick={()=>handelReadTime(blog)} className="font-semibold text-xl text-[#6047EC] underline">Mark as read</button>
         </div>
     );
 };
 
 Blog.propTypes={
     blog:PropTypes.object.isRequired,
-    handelBookmarkByBtn:PropTypes.func.isRequired
+    handelBookmarkByBtn:PropTypes.func.isRequired,
+    handelReadTime:PropTypes.func.isRequired
 }
 
 export default Blog;

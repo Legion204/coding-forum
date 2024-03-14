@@ -3,7 +3,7 @@ import { useState } from "react";
 import Blog from "../Blog/Blog";
 import PropTypes from 'prop-types';
 
-const Blogs = ({handelBookmarkByBtn}) => {
+const Blogs = ({handelBookmarkByBtn,handelReadTime}) => {
 
     const[blogs, setBlogs]=useState([]);
 
@@ -21,6 +21,7 @@ const Blogs = ({handelBookmarkByBtn}) => {
                     key={inx}
                     blog={blog}
                     handelBookmarkByBtn={handelBookmarkByBtn} 
+                    handelReadTime={handelReadTime}
                     ></Blog>)
             }
         </div>
@@ -28,7 +29,8 @@ const Blogs = ({handelBookmarkByBtn}) => {
 };
 
 Blogs.propTypes={
-    handelBookmarkByBtn:PropTypes.func.isRequired
+    handelBookmarkByBtn:PropTypes.func.isRequired,
+    handelReadTime:PropTypes.func.isRequired
 }
 
 export default Blogs;

@@ -13,12 +13,24 @@ function App() {
     setBookmarks(newBookmarks);
   }
 
+
+  const [readTime,setReadTime]=useState(0);
+
+  const handelReadTime = blog=>{
+    const newReadingTime= readTime+blog.reading_time;
+    setReadTime(newReadingTime);
+  }
+
   return (
     <div className='container mx-auto'>
       <Header></Header>
       <div className='flex'>
-        <Blogs handelBookmarkByBtn={handelBookmarkByBtn}></Blogs>
-        <Bookmarks bookmarks={bookmarks}></Bookmarks>
+        <Blogs 
+        handelReadTime={handelReadTime}
+        handelBookmarkByBtn={handelBookmarkByBtn}></Blogs>
+        <Bookmarks 
+        readTime={readTime}
+        bookmarks={bookmarks}></Bookmarks>
       </div>
     </div>
   )
